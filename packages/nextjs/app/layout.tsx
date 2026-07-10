@@ -6,7 +6,8 @@ import { getMetadata } from '../utils/scaffold-eth/getMetadata';
 
 export const metadata = getMetadata({
   title: 'NFT Bazaar',
-  description: 'Decentralized NFT Marketplace',
+  description: 'Decentralized NFT Marketplace built with Scaffold-ETH 2',
+  image: '/thumbnail.png',
 });
 
 export default function RootLayout({
@@ -17,7 +18,7 @@ export default function RootLayout({
   return (
     <html lang="ru" suppressHydrationWarning>
       <body>
-        <ThemeProvider attribute="data-theme" defaultTheme="light" enableSystem>
+        <ThemeProvider enableSystem attribute="data-theme" defaultTheme="light">
           <ScaffoldEthAppWithProviders>
             {children}
           </ScaffoldEthAppWithProviders>
