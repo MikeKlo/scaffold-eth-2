@@ -1,0 +1,18 @@
+{
+  "extends": [
+    "next/core-web-vitals",
+    "next/typescript",
+    "prettier"
+  ],
+  "rules": {
+    "react/no-unescaped-entities": "off",
+    "@typescript-eslint/no-unused-vars": "warn",
+    "no-unused-vars": "off"
+  },
+  "ignorePatterns": [
+    "node_modules/",
+    ".next/",
+    "out/",
+    "dist/"
+  ]
+}
