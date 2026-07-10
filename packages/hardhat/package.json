@@ -7,10 +7,13 @@
     "deploy": "hardhat ignition deploy ./ignition/modules/Deploy.ts --network localhost",
     "deploy:sepolia": "hardhat ignition deploy ./ignition/modules/Deploy.ts --network sepolia --verify",
     "test": "hardhat test",
-    "compile": "hardhat compile"
+    "compile": "hardhat compile",
+    "clean": "hardhat clean",
+    "lint": "prettier --check \"**/*.{ts,js,sol}\"",
+    "lint:fix": "prettier --write \"**/*.{ts,js,sol}\""
   },
   "dependencies": {
-    "@openzeppelin/contracts": "^5.0.1",
+    "@openzeppelin/contracts": "^5.0.2",
     "dotenv": "^16.4.5"
   },
   "devDependencies": {
@@ -19,10 +22,19 @@
     "@nomicfoundation/hardhat-network-helpers": "^1.0.11",
     "@nomicfoundation/hardhat-toolbox-viem": "^2.0.0",
     "@nomicfoundation/hardhat-verify": "^2.0.0",
+    "@nomicfoundation/hardhat-viem": "^1.0.0",
+    "@types/chai": "^4.3.11",
+    "@types/chai-as-promised": "^7.1.8",
+    "@types/mocha": "^10.0.6",
     "@types/node": "^22.5.0",
     "chai": "^4.5.0",
     "hardhat": "^2.22.0",
+    "hardhat-gas-reporter": "^1.0.10",
     "mocha": "^10.7.3",
+    "prettier": "^3.3.0",
+    "prettier-plugin-solidity": "^1.4.0",
+    "solc": "0.8.24",
+    "solidity-coverage": "^0.8.5",
     "ts-node": "^10.9.2",
     "typescript": "^5.6.2",
     "viem": "^2.21.0"

@@ -1,12 +1,13 @@
+
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.27;
+pragma solidity ^0.8.24;
 
 import "@openzeppelin/contracts/token/ERC721/IERC721.sol";
-import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
+import "@openzeppelin/contracts/utils/ReentrancyGuard.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 
 contract NFTMarketplace is ReentrancyGuard, Ownable {
-    uint256 public platformFee = 250; // 2.5% в basis points (1/10000)
+    uint256 public platformFee = 250; // 2.5%
     address public feeRecipient;
 
     struct Listing {
@@ -80,18 +81,15 @@ contract NFTMarketplace is ReentrancyGuard, Ownable {
         uint256 fee = (listing.price * platformFee) / 10000;
         uint256 sellerProceeds = listing.price - fee;
 
-        // Перевод NFT покупателю
         IERC721(listing.nftContract).safeTransferFrom(
             listing.seller,
             msg.sender,
             listing.tokenId
         );
 
-        // Перевод средств
         payable(listing.seller).transfer(sellerProceeds);
         payable(feeRecipient).transfer(fee);
 
-        // Возврат лишних средств
         if (msg.value > listing.price) {
             payable(msg.sender).transfer(msg.value - listing.price);
         }
